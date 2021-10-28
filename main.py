@@ -27,7 +27,7 @@ class MyWidget(QMainWindow):
 
         path_label = 'D:\Python\Detection_Metall\label_detect.png'
         pixmap = QPixmap(path_label)
-        self.label_2.setPixmap(pixmap.scaled(400, 64))
+        self.label_3.setPixmap(pixmap.scaled(400, 64))
 
 
 app = QApplication(sys.argv)

@@ -226,20 +226,22 @@ def sol_model(path_img):
 
     ids_train = ids.sample(frac=0.8)
     ids_valid = ids.drop(index=ids_train.index)
+    model.load_weights('best_model_7.h5')
 
 
-    hist = model.fit(
+    #hist = model.fit(
         # train dataset generator.
-        gen(ids_train, 64),
+     #   gen(ids_train, 64),
         # valid dataset generator.
-        validation_data = gen(ids_valid, 128),
+      #  validation_data = gen(ids_valid, 128),
         # number of steps for train set.
-        steps_per_epoch = np.ceil(ids_train.shape[0] / 64).astype('int'),
+       # steps_per_epoch = np.ceil(ids_train.shape[0] / 64).astype('int'),
         # number of steps for valid set.
-        validation_steps = np.ceil(ids_valid.shape[0] / 128).astype('int'),
+      #  validation_steps = np.ceil(ids_valid.shape[0] / 128).astype('int'),
         # number of epochs.
-        epochs = 10,
-    )
+       # epochs = 10,
+    #)
+
 
     def load_new_img(path):
         image = plt.imread(path)
@@ -257,6 +259,6 @@ def sol_model(path_img):
         fig, axs = plt.subplots(2, 1, figsize=[20, 10])
 
         cv2.imwrite('D:\Python\Detection_Metall\image_detect.png', image)
-        cv2.imwrite('D:\Python\Detection_Metall\label_detect.png', pred[0])
+        cv2.imwrite('D:\Python\Detection_Metall\label_detect.png', pred[0] * 256)
 
     load_new_img(path_img)
